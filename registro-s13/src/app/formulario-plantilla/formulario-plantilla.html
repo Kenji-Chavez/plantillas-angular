@@ -1,0 +1,39 @@
+<h2>A. Formulario basado en plantillas</h2>
+<form #f="ngForm" (ngSubmit)="guardar()" novalidate>
+  <label for="nombreT">Nombre completo</label>
+  <input id="nombreT" name="nombre" [(ngModel)]="estudiante.nombre" #nombre="ngModel" required minlength="4" />
+  @if (nombre.invalid && (nombre.dirty || nombre.touched)) {
+  <small class="error">
+    @if (nombre.errors?.['required']) { El nombre es obligatorio. }
+    @if (nombre.errors?.['minlength']) { Mínimo 4 caracteres. }
+  </small>
+  }
+
+  <label for="correoT">Correo electrónico</label>
+  <input id="correoT" name="correo" type="email" [(ngModel)]="estudiante.correo" #correo="ngModel" required email />
+  @if (correo.invalid && (correo.dirty || correo.touched)) {
+  <small class="error">Ingrese un correo válido y obligatorio.</small>
+  }
+
+  <label for="edadT">Edad</label>
+  <input id="edadT" name="edad" type="number" [(ngModel)]="estudiante.edad" #edad="ngModel" required min="16"
+    max="100" />
+  @if (edad.invalid && (edad.dirty || edad.touched)) {
+  <small class="error">Edad requerida: entre 16 y 100 años.</small>
+  }
+
+  <label for="carreraT">Carrera</label>
+  <input id="carreraT" name="carrera" [(ngModel)]="estudiante.carrera" #carrera="ngModel" required />
+  @if (carrera.invalid && (carrera.dirty || carrera.touched)) {
+  <small class="error">La carrera es obligatoria.</small>
+  }
+
+  <button type="submit" [disabled]="f.invalid">Registrar</button>
+</form>
+
+@if (registro) {
+<section class="resultado">
+  <h3>Registro válido (plantillas)</h3>
+  <p>{{ registro.nombre }} | {{ registro.correo }} | {{ registro.edad }} | {{ registro.carrera }}</p>
+</section>
+}

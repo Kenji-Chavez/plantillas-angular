@@ -1,0 +1,46 @@
+form {
+  max-width: 520px;
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid #dc2626;
+}
+
+input.ng-valid.ng-dirty {
+  border: 2px solid #15803d;
+}
+
+.error {
+  color: #b91c1c;
+}
+
+button {
+  padding: 12px;
+  background: #075985;
+  color: white;
+  border: 0;
+  border-radius: 6px;
+}
+
+button:disabled {
+  background: #94a3b8;
+}
+
+.resultado {
+  margin-top: 18px;
+  padding: 12px;
+  background: #dcfce7;
+}

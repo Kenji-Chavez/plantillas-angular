@@ -1,0 +1,35 @@
+<h2>B. Formulario reactivo</h2>
+<form [formGroup]="formulario" (ngSubmit)="guardar()" novalidate>
+  <label for="nombreR">Nombre completo</label>
+  <input id="nombreR" formControlName="nombre" />
+  @if (formulario.controls.nombre.invalid && formulario.controls.nombre.touched) {
+  <small class="error">Nombre obligatorio, mínimo 4 caracteres.</small>
+  }
+
+  <label for="correoR">Correo electrónico</label>
+  <input id="correoR" type="email" formControlName="correo" />
+  @if (formulario.controls.correo.invalid && formulario.controls.correo.touched) {
+  <small class="error">Ingrese un correo válido.</small>
+  }
+
+  <label for="edadR">Edad</label>
+  <input id="edadR" type="number" formControlName="edad" />
+  @if (formulario.controls.edad.invalid && formulario.controls.edad.touched) {
+  <small class="error">Edad entre 16 y 100 años.</small>
+  }
+
+  <label for="carreraR">Carrera</label>
+  <input id="carreraR" formControlName="carrera" />
+  @if (formulario.controls.carrera.invalid && formulario.controls.carrera.touched) {
+  <small class="error">La carrera es obligatoria.</small>
+  }
+
+  <button type="submit">Registrar</button>
+</form>
+
+@if (registro) {
+<section class="resultado">
+  <h3>Registro válido (reactivo)</h3>
+  <p>{{ registro.nombre }} | {{ registro.correo }} | {{ registro.edad }} | {{ registro.carrera }}</p>
+</section>
+}
